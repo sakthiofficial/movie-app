@@ -51,7 +51,7 @@ function App() {
         </ul>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies" element={<Movies movieList={movieList} SetmovieList={SetmovieList} />} />
 
           <Route path="/Addmovie" element={<Addmovie movieList={movieList} SetmovieList={SetmovieList} />} />
           {/* setting the url extera variables */}
