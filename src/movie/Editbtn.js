@@ -49,7 +49,9 @@ export function MovieEdit({ movie }) {
   )
   console.log(movieData.name);
 
-  useEffect(() => getdata, [])
+  useEffect(() => {
+    getdata()
+  }, [])
   const getdata = async () => {
     let data = fetch(`${api}/movies/${key}`, {
       method: "GET",
