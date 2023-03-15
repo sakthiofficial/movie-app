@@ -34,6 +34,7 @@ export function Movies() {
     fetch(`${api}/movies`).then((data) => data.json()).then((val) => SetmovieList(val));
   })
   useEffect(() => getdata1, [])
+  console.log(movieList);
   return (
 
 
