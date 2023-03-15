@@ -29,7 +29,6 @@ export function Movies() {
 
   };
 
-  const [user, setuser] = useState()
   const getdata1 = (() => {
 
     fetch(`${api}/movies`).then((data) => data.json()).then((val) => SetmovieList(val));
@@ -44,9 +43,9 @@ export function Movies() {
       <div className="Movie-cards">
 
 
+        <h1>Iam movie page</h1>
 
-
-        {movieList.map((val, index) => (<Movie _id={val._id} EditBtn={<span className="edit-btn" onClick={() => navigate2(`/movies/edit/${val._id}`)}><EditIcon /></span>} btn={<span className="delete-btn" onClick={() => buttonBtn(val._id)}><DeleteIcon /></span>} key={index} movie={val} />))}
+        {/* {movieList.map((val, index) => (<Movie _id={val._id} EditBtn={<span className="edit-btn" onClick={() => navigate2(`/movies/edit/${val._id}`)}><EditIcon /></span>} btn={<span className="delete-btn" onClick={() => buttonBtn(val._id)}><DeleteIcon /></span>} key={index} movie={val} />))} */}
 
 
       </div>
