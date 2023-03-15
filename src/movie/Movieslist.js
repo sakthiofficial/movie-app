@@ -9,14 +9,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { blueGrey } from "@mui/material/colors";
 
-export function Movies({ movieList, SetmovieList }) {
+export function Movies() {
   let navigate2 = useNavigate();
-
-
-  const getdata = (() => {
+  let getdata = () => {
 
     fetch(`${api}/movies`).then((data) => data.json()).then((val) => SetmovieList(val));
-  })
+
+  };
+  useEffect(() => getdata, [])
+  const [movieList, SetmovieList] = useState([]);
+
+
   let buttonBtn = (ele) => {
 
     fetch(`${api}/movies/${ele}`, {
@@ -26,8 +29,14 @@ export function Movies({ movieList, SetmovieList }) {
 
   };
 
+  const [user, setuser] = useState()
+  const getdata1 = (() => {
 
-  console.log(movieList);
+    fetch(`${api}/movies`).then((data) => data.json()).then((val) => SetmovieList(val));
+  })
+  useEffect(() => {
+    getdata1()
+  }, [])
   return (
 
 
@@ -38,7 +47,8 @@ export function Movies({ movieList, SetmovieList }) {
 
 
 
-        {movieList ? movieList.map((val, index) => (<Movie _id={val._id} EditBtn={<span className="edit-btn" onClick={() => navigate2(`/movies/edit/${val._id}`)}><EditIcon /></span>} btn={<span className="delete-btn" onClick={() => buttonBtn(val._id)}><DeleteIcon /></span>} key={index} movie={val} />)) : <h1>No data</h1>}
+
+        {movieList.map((val, index) => (<Movie _id={val._id} EditBtn={<span className="edit-btn" onClick={() => navigate2(`/movies/edit/${val._id}`)}><EditIcon /></span>} btn={<span className="delete-btn" onClick={() => buttonBtn(val._id)}><DeleteIcon /></span>} key={index} movie={val} />))}
 
 
       </div>
