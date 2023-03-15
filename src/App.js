@@ -11,6 +11,7 @@ import { Movies } from './movie/Movieslist';
 import { Addmovie } from './movie/Addmovie';
 import { MovieDetails } from './movie/MovieDetails';
 import { MovieEdit } from './movie/Editbtn';
+import { api } from './api';
 
 const darkTheme = createTheme({
   palette: {
@@ -27,7 +28,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch("https://63899fdc4eccb986e895a926.mockapi.io/movies").then((data) => data.json()).then((val) => SetmovieList(val))
+    fetch(`${api}/movies`).then((data) => data.json()).then((val) => SetmovieList(val))
 
   }, [])
   const [movieList, SetmovieList] = useState([]);
